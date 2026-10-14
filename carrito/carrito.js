@@ -136,7 +136,7 @@ function enviarPedidoWhatsApp() {
 
     const telefono = "525638166816";
     // Ajusta según la URL principal de tu repositorio en GitHub Pages
-    const baseUrl = "https://samiglz007.github.io/"; 
+    const baseUrl = "https://samiglz007.github.io/Floreria-Alberto/"; 
 
     const lineas = ["¡Hola! Me interesa encargar las siguientes piezas desde el catálogo:\n"];
     let total = 0;
