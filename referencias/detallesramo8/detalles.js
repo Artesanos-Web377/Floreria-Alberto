@@ -1,4 +1,4 @@
-// Efecto de Zoom Suave en la imagen
+// Efecto de Zoom Suave
 const img = document.getElementById('zoom-img');
 const box = document.querySelector('.main-image-wrapper');
 
@@ -16,21 +16,24 @@ if (box && img) {
     });
 }
 
-// Acción del botón: Agrega al carrito con la RUTA COMPLETA y da feedback visual
+// Acción del botón: Lee la foto real que se desplegó en la pantalla
 const btn = document.getElementById('buy-action');
 
 if (btn) {
     btn.addEventListener('click', () => {
-        // 1. Agregamos el producto pasándole la ruta absoluta desde la raíz
+        // Obtenemos el elemento de la imagen en pantalla
+        const imagenElemento = document.getElementById('zoom-img');
+        // 'src' contiene la URL absoluta real cargada por el navegador
+        const rutaImagenReal = imagenElemento ? imagenElemento.src : '';
+
         if (typeof agregarAlCarrito === 'function') {
             agregarAlCarrito(
                 'Artesanía Floral - FUSIÓN DORADA', 
                 1.00, 
-                'referencias/detallesramo8/arreglo8.jpeg'
+                rutaImagenReal
             );
         }
 
-        // 2. Feedback visual en el botón
         btn.innerHTML = "Excelente elección";
         btn.style.background = "#2d3436";
         btn.style.color = "#fff";
