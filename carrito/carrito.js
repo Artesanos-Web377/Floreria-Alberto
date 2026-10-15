@@ -130,11 +130,30 @@ function actualizarInterfazCarrito() {
     contenedorTotal.innerText = `$${totalAcumulado.toFixed(2)} USD`;
 }
 
-// Envía el pedido formateado a WhatsApp con URLs completas sin errores 404
 function enviarPedidoWhatsApp() {
     if (carrito.length === 0) return;
 
-    const telefono = "525638166816";
+    const telefono = "525535652131";
+    const lineas = ["¡Hola! Me interesa encargar las siguientes piezas desde el catálogo:\n"];
+    let total = 0;
+
+    carrito.forEach(item => {
+        const subtotal = item.precio * item.cantidad;
+        total += subtotal;
+
+        lineas.push(`🛍️ *${item.cantidad}x ${item.nombre}* - $${subtotal.toFixed(2)} USD`);
+        // La URL de la foto ya viene limpia y 100% funcional desde la pantalla
+        lineas.push(`🖼️ Ver Foto: ${item.imagen}\n`);
+    });
+
+    lineas.push(`💰 *Total estimado:* $${total.toFixed(2)} USD\n`);
+    lineas.push("Por favor, confírmame la disponibilidad para agendar mi pedido. 😊");
+
+    const mensaje = lineas.join("\n");
+    const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
+}
+
     // Ajusta según la URL principal de tu repositorio en GitHub Pages
     const baseUrl = "https://samiglz007.github.io/Floreria-Alberto/"; 
 
