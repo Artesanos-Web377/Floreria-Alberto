@@ -16,21 +16,19 @@ if (box && img) {
     });
 }
 
-// Acción del botón: Lee la foto real que se desplegó en la pantalla
+// Acción del botón: Envía la URL completa de la página web actual
 const btn = document.getElementById('buy-action');
 
 if (btn) {
     btn.addEventListener('click', () => {
-        // Obtenemos el elemento de la imagen en pantalla
-        const imagenElemento = document.getElementById('zoom-img');
-        // 'src' contiene la URL absoluta real cargada por el navegador
-        const rutaImagenReal = imagenElemento ? imagenElemento.src : '';
+        // Obtenemos la URL exacta de la página donde está parado el usuario
+        const urlPaginaActual = window.location.href;
 
         if (typeof agregarAlCarrito === 'function') {
             agregarAlCarrito(
                 'Artesanía Floral - FUSIÓN DORADA', 
                 1.00, 
-                rutaImagenReal
+                urlPaginaActual // <--- Guardamos la URL de la página web
             );
         }
 
